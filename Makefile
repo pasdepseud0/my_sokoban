@@ -9,7 +9,7 @@ SRC =	\
 		src/barrel_and_pit.c \
 		src/check_map.c	 \
 		src/descriptor.c \
-		src/get_info.c	 \
+		src/get_map.c	 \
 		src/move_chara.c \
 		src/my_sokoban.c \
 		src/zevent.c	 \
