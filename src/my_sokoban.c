@@ -8,18 +8,18 @@
 #include "my.h"
 #include "my_sokoban.h"
 
-static int x_and_o(struct_t *map, int row, int col, int i)
+static int barrel_and_pit(struct_t *map, int row, int col, int i)
 {
-    if (map->map[row][col] == 'X' && map->saved[row][col] == 'O')
+    if (map->map[row][col] == 'X' && map->save[row][col] == 'O')
         i++;
-    if (i == map->o) {
+    if (i == map->pit) {
         endwin();
         exit(0);
     }
     return (i);
 }
 
-static void check_if_o(struct_t *map)
+static void check_if_pit(struct_t *map)
 {
     int row = 0;
     int i = 0;
@@ -28,9 +28,9 @@ static void check_if_o(struct_t *map)
     int temp = 0;
 
     while (row != map->row) {
-        columns = cols(map, temp);
+        columns = check_index(map, temp);
         while (col != columns) {
-            i = x_and_o(map, row, col, i);
+            i = barrel_and_pit(map, row, col, i);
             col++;
             temp++;
         }
@@ -57,22 +57,22 @@ static void loop(struct_t *map)
             exit(84);
         key_event(map, key);
         refresh();
-        check_if_o(map);
+        check_if_pit(map);
     }
     endwin();
 }
 
 void sokoban(char *path)
 {
-    struct_t *map;
+    struct_t *check;
 
-    map = NULL;
-    map = malloc(sizeof(struct_t));
-    check_openread(map, path);
-    get_nbr_o(map);
-    get_cols(map);
-    check_buff_map(map);
-    copy_in_double(map);
-    get_p(map);
-    loop(map);
+    check = NULL;
+    check = malloc(sizeof(struct_t));
+    check_openread(check, path);
+    get_a_pit(check);
+    get_memory(check);
+    check_buff_map(check);
+    copy_on_memory(check);
+    get_baba(check);
+    loop(check);
 }

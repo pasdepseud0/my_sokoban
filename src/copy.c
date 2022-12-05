@@ -41,33 +41,30 @@ void check_buff_map(struct_t *check)
     }
 }
 
-int cols(struct_t *check, int index)
+int check_index(struct_t *check, int index)
 {
     int count = 0;
-
-    while (check->buffer[index] != '\n' && check->buffer[index] != '\0') {
+    for (;check->buffer[index] != '\n' && check->buffer[index] != '\0'; count++)
         index++;
-        count++;
-    }
     return (count);
 }
 
-void copy_in_double(struct_t *check)
+void copy_on_memory(struct_t *check)
 {
     int row = 0;
+    int pillar = 0;
     int col = 0;
     int index = 0;
-    int columns = 0;
 
     check->map = malloc(sizeof(char *) * (check->row) + 1);
-    check->saved = malloc(sizeof(char *) * (check->row) + 1);
+    check->save = malloc(sizeof(char *) * (check->row) + 1);
     for (; row < check->row; row++) {
-        columns = cols(check, index);
-        check->map[row] = malloc(sizeof(char) * columns + 1);
-        check->saved[row] = malloc(sizeof(char) * columns + 1);
-        for (col = 0; col < columns; col += 1) {
+        pillar = check_index(check, index);
+        check->map[row] = malloc(sizeof(char) * pillar + 1);
+        check->save[row] = malloc(sizeof(char) * pillar + 1);
+        for (col = 0; col < pillar; col += 1) {
             check->map[row][col] = check->buffer[index];
-            check->saved[row][col] = check->buffer[index];
+            check->save[row][col] = check->buffer[index];
             index++;
         }
         index++;

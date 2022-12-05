@@ -8,7 +8,7 @@
 #include "my.h"
 #include "my_sokoban.h"
 
-void get_cols(struct_t *map)
+void get_memory(struct_t *map)
 {
     int i = 0;
     int temp = 0;
@@ -28,47 +28,47 @@ void get_cols(struct_t *map)
     map->row = j;
 }
 
-void get_p(struct_t *map)
+void get_baba(struct_t *check)
 {
     int row = 0;
     int col = 0;
     int columns = 0;
-    int temp = 0;
+    int index = 0;
 
-    while (row != map->row) {
-        columns = cols(map, temp);
+    while (row != check->row) {
+        columns = check_index(check, index);
         while (col != columns) {
-            check_if_p(map, col, row);
+            check_if_baba(check, col, row);
             col++;
-            temp++;
+            index++;
         }
-        temp++;
+        index++;
         col = 0;
         row++;
     }
-    if (map->p != 1)
+    if (check->baba != 1)
         exit(84);
 }
 
-void check_if_p(struct_t *map, int col, int row)
+void check_if_baba(struct_t *check, int col, int row)
 {
-    if (map->map[row][col] == 'P') {
-        map->posx = col;
-        map->posy = row;
-        map->p++;
+    if (check->map[row][col] == 'P') {
+        check->posx = col;
+        check->posy = row;
+        check->baba++;
     }
 }
 
-void get_nbr_o(struct_t *map)
+void get_a_pit(struct_t *check)
 {
     int i = 0;
     int j = 0;
 
-    while (map->buffer[i]) {
-        if (map->buffer[i] == 'O')
+    while (check->buffer[i]) {
+        if (check->buffer[i] == 'O')
             j++;
         i++;
     }
     i = 0;
-    map->o = j;
+    check->pit = j;
 }

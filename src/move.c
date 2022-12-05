@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2022
 ** move.c
 ** File description:
-** move a character 'P'
+** move 'P' the chara
 */
 
 #include "my.h"
@@ -13,7 +13,7 @@ int move_up(struct_t *map)
     if (map->map[map->posy - 1][map->posx] == 'X'
         && map->map[map->posy - 2][map->posx] != '#'
         && map->map[map->posy - 2][map->posx] != 'X') {
-        if (map->saved[map->posy][map->posx] == 'O') {
+        if (map->save[map->posy][map->posx] == 'O') {
             map->map[map->posy][map->posx] = 'O';
         } else {
             map->map[map->posy][map->posx] = ' ';
@@ -22,7 +22,7 @@ int move_up(struct_t *map)
         map->map[map->posy - 1][map->posx] = 'P';
         map->posy--;
     } else if (map->map[map->posy - 1][map->posx] != 'X') {
-        if (map->saved[map->posy][map->posx] == 'O')
+        if (map->save[map->posy][map->posx] == 'O')
             map->map[map->posy][map->posx] = 'O';
         else
             map->map[map->posy][map->posx] = ' ';
@@ -37,7 +37,7 @@ int move_down(struct_t *map)
     if (map->map[map->posy + 1][map->posx] == 'X'
         && map->map[map->posy + 2][map->posx] != '#'
         && map->map[map->posy + 2][map->posx] != 'X') {
-        if (map->saved[map->posy][map->posx] == 'O')
+        if (map->save[map->posy][map->posx] == 'O')
             map->map[map->posy][map->posx] = 'O';
         else
             map->map[map->posy][map->posx] = ' ';
@@ -45,7 +45,7 @@ int move_down(struct_t *map)
         map->map[map->posy + 1][map->posx] = 'P';
         map->posy++;
     } else if (map->map[map->posy + 1][map->posx] != 'X') {
-        if (map->saved[map->posy][map->posx] == 'O')
+        if (map->save[map->posy][map->posx] == 'O')
             map->map[map->posy][map->posx] = 'O';
         else
             map->map[map->posy][map->posx] = ' ';
@@ -60,7 +60,7 @@ int move_left(struct_t *map)
     if (map->map[map->posy][map->posx - 1] == 'X'
         && map->map[map->posy][map->posx - 2] != '#'
         && map->map[map->posy][map->posx - 2] != 'X') {
-        if (map->saved[map->posy][map->posx] == 'O')
+        if (map->save[map->posy][map->posx] == 'O')
             map->map[map->posy][map->posx] = 'O';
         else
             map->map[map->posy][map->posx] = ' ';
@@ -68,7 +68,7 @@ int move_left(struct_t *map)
         map->map[map->posy][map->posx - 2] = 'X';
         map->posx--;
     } else if (map->map[map->posy][map->posx - 1] != 'X') {
-        if (map->saved[map->posy][map->posx] == 'O')
+        if (map->save[map->posy][map->posx] == 'O')
             map->map[map->posy][map->posx] = 'O';
         else
             map->map[map->posy][map->posx] = ' ';
@@ -83,7 +83,7 @@ int move_right(struct_t *map)
     if (map->map[map->posy][map->posx + 1] == 'X'
         && map->map[map->posy][map->posx + 2] != '#'
         && map->map[map->posy][map->posx + 2] != 'X') {
-        if (map->saved[map->posy][map->posx] == 'O')
+        if (map->save[map->posy][map->posx] == 'O')
             map->map[map->posy][map->posx] = 'O';
         else
             map->map[map->posy][map->posx] = ' ';
@@ -91,7 +91,7 @@ int move_right(struct_t *map)
         map->map[map->posy][map->posx + 2] = 'X';
         map->posx++;
     } else if (map->map[map->posy][map->posx + 1] != 'X') {
-        if (map->saved[map->posy][map->posx] == 'O')
+        if (map->save[map->posy][map->posx] == 'O')
             map->map[map->posy][map->posx] = 'O';
         else
             map->map[map->posy][map->posx] = ' ';
