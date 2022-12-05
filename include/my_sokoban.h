@@ -18,37 +18,37 @@
     typedef struct {
         int fd;
         char **map;
-        char **saved;
+        char **save;
         char *buffer;
         int row;
         int col;
         int size;
         int posx;
         int posy;
-        int o;
-        int p;
-        int *pos_o;
+        int pit;
+        int baba;
+        int *check_pit;
     }struct_t;
 
     void check_openread(struct_t *file, char *path);
-    void check_map(struct_t *map);
-    int cols(struct_t *map, int temp);
-    void copy_in_double(struct_t *map);
+    void check_buff_map(struct_t *check);
+    int check_index(struct_t *check, int index);
+    void copy_on_memory(struct_t *check);
 
-    void get_cols(struct_t *map);
-    void get_p(struct_t *map);
-    void check_if_p(struct_t *map, int col, int row);
-    void get_nbr_o(struct_t *map);
+    void get_memory(struct_t *check);
+    void get_baba(struct_t *check);
+    void check_if_baba(struct_t *check, int col, int row);
+    void get_a_pit(struct_t *check);
 
     void helper(void);
 
-    void key_event(struct_t *map, int key);
+    void key_event(struct_t *check, int key);
 
-    int move_up(struct_t *map);
-    int move_down(struct_t *map);
-    int move_left(struct_t *map);
-    int move_right(struct_t *map);
+    int move_up(struct_t *check);
+    int move_down(struct_t *check);
+    int move_left(struct_t *check);
+    int move_right(struct_t *check);
 
-    void sokoban(char *filepath);
+    void sokoban(char *path);
 
 #endif
