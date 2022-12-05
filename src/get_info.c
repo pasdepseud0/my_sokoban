@@ -8,7 +8,7 @@
 #include "my.h"
 #include "my_sokoban.h"
 
-void get_cols(map_t *map)
+void get_cols(struct_t *map)
 {
     int i = 0;
     int temp = 0;
@@ -28,7 +28,7 @@ void get_cols(map_t *map)
     map->row = j;
 }
 
-void get_p(map_t *map)
+void get_p(struct_t *map)
 {
     int row = 0;
     int col = 0;
@@ -50,7 +50,7 @@ void get_p(map_t *map)
         exit(84);
 }
 
-void check_if_p(map_t *map, int col, int row)
+void check_if_p(struct_t *map, int col, int row)
 {
     if (map->map[row][col] == 'P') {
         map->posx = col;
@@ -59,7 +59,7 @@ void check_if_p(map_t *map, int col, int row)
     }
 }
 
-void get_nbr_o(map_t *map)
+void get_nbr_o(struct_t *map)
 {
     int i = 0;
     int j = 0;

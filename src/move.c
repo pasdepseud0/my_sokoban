@@ -8,7 +8,7 @@
 #include "my.h"
 #include "my_sokoban.h"
 
-int move_up(map_t *map)
+int move_up(struct_t *map)
 {
     if (map->map[map->posy - 1][map->posx] == 'X'
         && map->map[map->posy - 2][map->posx] != '#'
@@ -32,7 +32,7 @@ int move_up(map_t *map)
     return (0);
 }
 
-int move_down(map_t *map)
+int move_down(struct_t *map)
 {
     if (map->map[map->posy + 1][map->posx] == 'X'
         && map->map[map->posy + 2][map->posx] != '#'
@@ -55,7 +55,7 @@ int move_down(map_t *map)
     return (0);
 }
 
-int move_left(map_t *map)
+int move_left(struct_t *map)
 {
     if (map->map[map->posy][map->posx - 1] == 'X'
         && map->map[map->posy][map->posx - 2] != '#'
@@ -78,7 +78,7 @@ int move_left(map_t *map)
     return (0);
 }
 
-int move_right(map_t *map)
+int move_right(struct_t *map)
 {
     if (map->map[map->posy][map->posx + 1] == 'X'
         && map->map[map->posy][map->posx + 2] != '#'

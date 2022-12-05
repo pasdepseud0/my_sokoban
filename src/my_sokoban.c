@@ -8,7 +8,7 @@
 #include "my.h"
 #include "my_sokoban.h"
 
-static int x_and_o(map_t *map, int row, int col, int i)
+static int x_and_o(struct_t *map, int row, int col, int i)
 {
     if (map->map[row][col] == 'X' && map->saved[row][col] == 'O')
         i++;
@@ -19,7 +19,7 @@ static int x_and_o(map_t *map, int row, int col, int i)
     return (i);
 }
 
-static void check_if_o(map_t *map)
+static void check_if_o(struct_t *map)
 {
     int row = 0;
     int i = 0;
@@ -40,7 +40,7 @@ static void check_if_o(map_t *map)
     }
 }
 
-static void loop(map_t *map)
+static void loop(struct_t *map)
 {
     int key;
 
@@ -62,16 +62,16 @@ static void loop(map_t *map)
     endwin();
 }
 
-void sokoban(char *filepath)
+void sokoban(char *path)
 {
-    map_t *map;
+    struct_t *map;
 
     map = NULL;
-    map = malloc(sizeof(map_t));
-    copy_in_buffer(map, filepath);
+    map = malloc(sizeof(struct_t));
+    check_openread(map, path);
     get_nbr_o(map);
     get_cols(map);
-    check_map(map);
+    check_buff_map(map);
     copy_in_double(map);
     get_p(map);
     loop(map);

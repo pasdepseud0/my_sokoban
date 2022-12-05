@@ -8,7 +8,7 @@
 #include "my.h"
 #include "my_sokoban.h"
 
-void key_event(map_t *map, int key)
+void key_event(struct_t *map, int key)
 {
     if (key == 27) {
         endwin();

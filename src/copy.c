@@ -8,69 +8,68 @@
 #include "my.h"
 #include "my_sokoban.h"
 
-void copy_in_buffer(map_t *map, char *filepath)
+void check_openread(struct_t *check, char *path)
 {
-    char *temp = malloc(sizeof(char) * 2);
+    char *buf = malloc(sizeof(char) * 2);
     int i = 0;
-    int tmp = open(filepath, O_RDONLY);
+    int file_descriptor = open(path, O_RDONLY);
 
-    if (tmp == -1) {
+    if (file_descriptor == -1) {
         exit(84);
     }
-    for (i = 0; read(tmp, temp, 1); i++) ;
+    for (i = 0; read(file_descriptor, buf, 1); i++) ;
     i++;
-    close(tmp);
-    map->fd = open(filepath, O_RDONLY);
-    map->buffer = NULL;
-    map->buffer = malloc((sizeof(char) * i));
-    read(map->fd, map->buffer, i);
-    map->buffer[i] = '\0';
-    close(map->fd);
+    close(file_descriptor);
+    check->fd = open(path, O_RDONLY);
+    check->buffer = NULL;
+    check->buffer = malloc((sizeof(char) * i));
+    read(check->fd, check->buffer, i);
+    check->buffer[i] = '\0';
+    close(check->fd);
 }
 
-void check_map(map_t *map)
+void check_buff_map(struct_t *check)
 {
-    for (int i = 0; map->buffer[i];) {
-        if (map->buffer[i] == ' ' || map->buffer[i] == '\n' ||
-            map->buffer[i] == '#' || map->buffer[i] == 'P' ||
-            map->buffer[i] == 'O' || map->buffer[i] == 'X' ||
-            map->buffer[i] == '\0') {
+    for (int i = 0; check->buffer[i];) {
+        if (check->buffer[i] == ' ' || check->buffer[i] == '\n' ||
+            check->buffer[i] == '#' || check->buffer[i] == 'P' ||
+            check->buffer[i] == 'O' || check->buffer[i] == 'X' ||
+            check->buffer[i] == '\0') {
             i++;
         } else
             exit(84);
     }
 }
 
-int cols(map_t *map, int temp)
+int cols(struct_t *check, int index)
 {
-    int i = 0;
+    int count = 0;
 
-    while (map->buffer[temp] != '\n' && map->buffer[temp] != '\0') {
-        temp++;
-        i++;
+    while (check->buffer[index] != '\n' && check->buffer[index] != '\0') {
+        index++;
+        count++;
     }
-    return (i);
+    return (count);
 }
 
-void copy_in_double(map_t *map)
+void copy_in_double(struct_t *check)
 {
     int row = 0;
     int col = 0;
-    int temp = 0;
+    int index = 0;
     int columns = 0;
 
-    map->map = malloc(sizeof(char *) * (map->row) + 1);
-    map->saved = malloc(sizeof(char *) * (map->row) + 1);
-    for (; row < map->row; row++) {
-        columns = cols(map, temp);
-        map->map[row] = malloc(sizeof(char) * columns + 1);
-        map->saved[row] = malloc(sizeof(char) * columns + 1);
+    check->map = malloc(sizeof(char *) * (check->row) + 1);
+    check->saved = malloc(sizeof(char *) * (check->row) + 1);
+    for (; row < check->row; row++) {
+        columns = cols(check, index);
+        check->map[row] = malloc(sizeof(char) * columns + 1);
+        check->saved[row] = malloc(sizeof(char) * columns + 1);
         for (col = 0; col < columns; col += 1) {
-            map->map[row][col] = map->buffer[temp];
-            map->saved[row][col] = map->buffer[temp];
-
-            temp++;
+            check->map[row][col] = check->buffer[index];
+            check->saved[row][col] = check->buffer[index];
+            index++;
         }
-        temp++;
+        index++;
     }
 }

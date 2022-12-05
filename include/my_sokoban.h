@@ -15,7 +15,7 @@
     #include <ncurses.h>
     #include <string.h>
 
-    typedef struct map {
+    typedef struct {
         int fd;
         char **map;
         char **saved;
@@ -28,26 +28,26 @@
         int o;
         int p;
         int *pos_o;
-    }map_t;
+    }struct_t;
 
-    void copy_in_buffer(map_t *map, char *filepath);
-    void check_map(map_t *map);
-    int cols(map_t *map, int temp);
-    void copy_in_double(map_t *map);
+    void check_openread(struct_t *file, char *path);
+    void check_map(struct_t *map);
+    int cols(struct_t *map, int temp);
+    void copy_in_double(struct_t *map);
 
-    void get_cols(map_t *map);
-    void get_p(map_t *map);
-    void check_if_p(map_t *map, int col, int row);
-    void get_nbr_o(map_t *map);
+    void get_cols(struct_t *map);
+    void get_p(struct_t *map);
+    void check_if_p(struct_t *map, int col, int row);
+    void get_nbr_o(struct_t *map);
 
     void helper(void);
 
-    void key_event(map_t *map, int key);
+    void key_event(struct_t *map, int key);
 
-    int move_up(map_t *map);
-    int move_down(map_t *map);
-    int move_left(map_t *map);
-    int move_right(map_t *map);
+    int move_up(struct_t *map);
+    int move_down(struct_t *map);
+    int move_left(struct_t *map);
+    int move_right(struct_t *map);
 
     void sokoban(char *filepath);
 
