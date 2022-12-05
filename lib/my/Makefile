@@ -47,12 +47,6 @@ clean:
 fclean: clean
 	find . \( -name "$(NAME)" \) -delete
 
-# unit_test: fclean
-# 		gcc -o unit_test $(SRC) -L . -l my -lcriterion --coverage
-
-# run_test: unit_test
-# 	./unit_test
-
 debug: CFLAGS += -g
 
 debug: re

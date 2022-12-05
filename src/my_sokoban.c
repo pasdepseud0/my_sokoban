@@ -1,37 +1,78 @@
 /*
 ** EPITECH PROJECT, 2022
-** main.c
+** my_sokoban.c
 ** File description:
-** main of the project
+** my_sokoban
 */
 
 #include "my.h"
 #include "my_sokoban.h"
 
-void my_sokoban(const char *path)
+static int x_and_o(map_t *map, int row, int col, int i)
 {
-    global_t *all;
-
-    all = NULL;
-    all = malloc(sizeof(global_t));
-    cp_buff(all, path);
-    check_pit(all);
-    get_cols(all);
-    check_map(all);
-    cp_double(all);
-    get_character(all);
-    buckle(all);
+    if (map->map[row][col] == 'X' && map->saved[row][col] == 'O')
+        i++;
+    if (i == map->o) {
+        endwin();
+        exit(0);
+    }
+    return (i);
 }
 
-int main(int argc, char **argv)
+static void check_if_o(map_t *map)
 {
-    if (argc == 2) {
-        if (argv[1][0] == '-' && argv[1][1] == 'h') {
-            descriptor();
-            exit(0);
+    int row = 0;
+    int i = 0;
+    int col = 0;
+    int columns = 0;
+    int temp = 0;
+
+    while (row != map->row) {
+        columns = cols(map, temp);
+        while (col != columns) {
+            i = x_and_o(map, row, col, i);
+            col++;
+            temp++;
         }
-        my_sokoban(argv[1]);
-    } else {
-        return (84);
+        temp++;
+        col = 0;
+        row++;
     }
+}
+
+static void loop(map_t *map)
+{
+    int key;
+
+    initscr();
+    noecho();
+    keypad(stdscr, TRUE);
+    refresh();
+    while (1) {
+        clear();
+        for (int row = 0; row < map->row; row += 1)
+            mvprintw(row, 0, "%s", map->map[row]);
+        key = getch();
+        if (key == -1)
+            exit(84);
+        key_event(map, key);
+        refresh();
+        check_if_o(map);
+    }
+    endwin();
+}
+
+void sokoban(char *filepath)
+{
+    map_t *map;
+
+    map = NULL;
+    map = malloc(sizeof(map_t));
+    copy_in_buffer(map, filepath);
+    get_nbr_o(map);
+    get_cols(map);
+    check_map(map);
+    copy_in_double(map);
+    get_p(map);
+    loop(map);
 }

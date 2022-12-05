@@ -2,59 +2,53 @@
 ** EPITECH PROJECT, 2022
 ** my_sokoban.h
 ** File description:
-** contain all function and all struct for this project
+** struct of my_sokoban
 */
 
-#ifndef MY_SOKOBAN_H_
-    #define MY_SOKOBAN_H_
+#ifndef MAP_H
+    #define MAP_H
 
     #include <stddef.h>
     #include <stdlib.h>
+    #include <unistd.h>
+    #include <fcntl.h>
+    #include <ncurses.h>
+    #include <string.h>
 
-    typedef struct game {
-    char **map;
-    char **save;
-    char *buffer;
-    int col;
-    int row;
-    int fd;
-    int size;
-    int chara;
-    int pit;
-    } game_t;
+    typedef struct map {
+        int fd;
+        char **map;
+        char **saved;
+        char *buffer;
+        int row;
+        int col;
+        int size;
+        int posx;
+        int posy;
+        int o;
+        int p;
+        int *pos_o;
+    }map_t;
 
-    typedef struct position {
-    int *pit;
-    int x;
-    int y;
-    } pos_t;
+    void copy_in_buffer(map_t *map, char *filepath);
+    void check_map(map_t *map);
+    int cols(map_t *map, int temp);
+    void copy_in_double(map_t *map);
 
-    typedef struct global {
-    pos_t coord;
-    game_t *game;
-    } global_t;
+    void get_cols(map_t *map);
+    void get_p(map_t *map);
+    void check_if_p(map_t *map, int col, int row);
+    void get_nbr_o(map_t *map);
 
-    void check_if_pit(global_t *all);
-    int barrel_and_pit(global_t *all, int row, int col, int i);
-    void buckle(global_t *all);
+    void helper(void);
 
-    void cp_buff(global_t *all, char const *path);
-    void check_map(global_t *all);
-    int cols(global_t *all, int tmp);
-    void cp_double(global_t *all);
+    void key_event(map_t *map, int key);
 
-    void descriptor(void);
+    int move_up(map_t *map);
+    int move_down(map_t *map);
+    int move_left(map_t *map);
+    int move_right(map_t *map);
 
-    void get_cols(global_t *all);
-    void check_if_a_chara(global_t *all, int col, int row);
-    void get_character(global_t *all);
-    void check_pit(global_t *all);
-
-    int move_up(global_t *all);
-    int move_down(global_t *all);
-    int move_left(global_t *all);
-    int move_right(global_t *all);
-
-    void zevent(global_t *all, int key);
+    void sokoban(char *filepath);
 
 #endif

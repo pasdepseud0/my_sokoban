@@ -6,13 +6,13 @@
 ##
 
 SRC =	\
-		src/barrel_and_pit.c \
-		src/check_map.c	 \
-		src/descriptor.c \
-		src/get_map.c	 \
-		src/move_chara.c \
-		src/my_sokoban.c \
-		src/zevent.c	 \
+		src/copy.c \
+		src/get_info.c	 \
+		src/helper.c \
+		src/key_event.c	 \
+		src/main.c \
+		src/move.c \
+		src/$(NAME).c
 
 NAME =	my_sokoban
 
@@ -20,11 +20,13 @@ OBJ =	$(SRC:.c=.o)
 
 CFLAGS = -Wall -Wextra -I include
 
+LIB = -L lib/my -lmy
+
 all: 	$(NAME)
 
 $(NAME): $(OBJ)
 	make -C lib/my
-	gcc $(OBJ) -o $(NAME) -L lib/my -lmy -lncurses
+	gcc $(OBJ) -o $(NAME) $(LIB) -lncurses
 
 clean:
 	make clean -C lib/my/
