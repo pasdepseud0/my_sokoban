@@ -17,14 +17,14 @@
 
     typedef struct {
         int fd;
-        char **map;
-        char **save;
         char *buffer;
-        int row;
-        int col;
         int size;
+        int col;
+        int row;
         int posx;
         int posy;
+        char **map;
+        char **save;
         int pit;
         int baba;
         int *check_pit;

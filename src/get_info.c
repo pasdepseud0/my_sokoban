@@ -61,14 +61,14 @@ void check_if_baba(struct_t *check, int col, int row)
 
 void get_a_pit(struct_t *check)
 {
-    int i = 0;
+    int index = 0;
     int j = 0;
 
-    while (check->buffer[i]) {
-        if (check->buffer[i] == 'O')
+    while (check->buffer[index]) {
+        if (check->buffer[index] == 'O')
             j++;
-        i++;
+        index++;
     }
-    i = 0;
+    index = 0;
     check->pit = j;
 }

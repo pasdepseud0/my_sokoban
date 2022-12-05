@@ -8,14 +8,14 @@
 #include "my.h"
 #include "my_sokoban.h"
 
-int main(int argc, char **argv)
+int main(int ac, char **av)
 {
-    if (argc == 2) {
-        if (argv[1][0] == '-' && argv[1][1] == 'h') {
+    if (ac == 2) {
+        if (av[1][0] == '-' && av[1][1] == 'h') {
             helper();
             exit(0);
         }
-        sokoban(argv[1]);
+        sokoban(av[1]);
     } else {
         return (84);
     }
