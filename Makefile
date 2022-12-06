@@ -6,8 +6,8 @@
 ##
 
 SRC =	\
-		src/copy.c \
-		src/get_info.c	 \
+		src/copy_on_memory.c \
+		src/get_memory.c	 \
 		src/helper.c \
 		src/key_event.c	 \
 		src/main.c \
