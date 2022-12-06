@@ -31,9 +31,9 @@ void check_openread(struct_t *check, char *path)
 void check_buff_map(struct_t *check)
 {
     for (int i = 0; check->buffer[i];) {
-        if (check->buffer[i] == ' ' || check->buffer[i] == '\n' ||
-            check->buffer[i] == '#' || check->buffer[i] == 'P' ||
-            check->buffer[i] == 'O' || check->buffer[i] == 'X' ||
+        if (check->buffer[i] == '#' || check->buffer[i] == '\n' ||
+            check->buffer[i] == ' ' || check->buffer[i] == 'P' ||
+            check->buffer[i] == 'X' || check->buffer[i] == 'O' ||
             check->buffer[i] == '\0') {
             i++;
         } else
