@@ -59,10 +59,10 @@ void copy_on_memory(struct_t *check)
     check->map = malloc(sizeof(char *) * (check->row) + 1);
     check->save = malloc(sizeof(char *) * (check->row) + 1);
     for (; row < check->row; row++) {
-        pillar = check_index(check, index);
-        check->map[row] = malloc(sizeof(char) * pillar + 1);
-        check->save[row] = malloc(sizeof(char) * pillar + 1);
-        for (col = 0; col < pillar; col += 1) {
+        pil = check_index(check, index);
+        check->map[row] = malloc(sizeof(char) * pil + 1);
+        check->save[row] = malloc(sizeof(char) * pil + 1);
+        for (col = 0; col < pil; col += 1) {
             check->map[row][col] = check->buffer[index];
             check->save[row][col] = check->buffer[index];
             index++;
