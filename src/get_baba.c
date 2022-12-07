@@ -8,24 +8,6 @@
 #include "my.h"
 #include "my_sokoban.h"
 
-void get_memory(struct_t *check)
-{
-    int index = 0;
-    int memory = 0;
-    int count = 0;
-
-    for (; check->buffer[memory] != '\n'; memory++) {
-    }
-    check->col = memory;
-    for (; check->buffer[index] != '\0'; index++) {
-        if (check->buffer[index] == '\n')
-            count++;
-    }
-    if (check->buffer[i - 1] != '\n')
-        count++;
-    check->row = count;
-}
-
 void check_if_baba(struct_t *check, int col, int row)
 {
     if (check->map[row][col] == 'P') {
