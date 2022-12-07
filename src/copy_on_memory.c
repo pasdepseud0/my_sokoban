@@ -52,7 +52,7 @@ int check_index(struct_t *check, int index)
 void copy_on_memory(struct_t *check)
 {
     int row = 0;
-    int pillar = 0;
+    int pil = 0;
     int col = 0;
     int index = 0;
 
@@ -69,4 +69,22 @@ void copy_on_memory(struct_t *check)
         }
         index++;
     }
+}
+
+void get_memory(struct_t *check)
+{
+    int index = 0;
+    int memory = 0;
+    int count = 0;
+
+    for (; check->buffer[memory] != '\n'; memory++) {
+    }
+    check->col = memory;
+    for (; check->buffer[index] != '\0'; index++) {
+        if (check->buffer[index] == '\n')
+            count++;
+    }
+    if (check->buffer[i - 1] != '\n')
+        count++;
+    check->row = count;
 }
