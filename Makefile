@@ -8,7 +8,7 @@
 SRC =	\
 		src/copy_on_memory.c \
 		src/get_memory.c \
-		src/key_event.c	 \
+		src/core.c	 \
 		src/move.c \
 		src/$(NAME).c
 

@@ -62,7 +62,7 @@ static void loop(struct_t *check)
     endwin();
 }
 
-void sokoban(char *path)
+void my_sokoban(char *path)
 {
     struct_t *check;
 

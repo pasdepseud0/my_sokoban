@@ -21,8 +21,8 @@
         int size;
         int col;
         int row;
-        int posx;
-        int posy;
+        int coordx;
+        int coordy;
         char **map;
         char **save;
         int pit;
@@ -49,6 +49,6 @@
     int move_left(struct_t *check);
     int move_right(struct_t *check);
 
-    void sokoban(char *path);
+    void my_sokoban(char *path);
 
 #endif

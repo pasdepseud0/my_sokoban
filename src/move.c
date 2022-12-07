@@ -10,93 +10,93 @@
 
 int move_up(struct_t *check)
 {
-    if (check->map[check->posy - 1][check->posx] == 'X'
-        && check->map[check->posy - 2][check->posx] != '#'
-        && check->map[check->posy - 2][check->posx] != 'X') {
-        if (check->save[check->posy][check->posx] == 'O') {
-            check->map[check->posy][check->posx] = 'O';
+    if (check->map[check->coordy - 1][check->coordx] == 'X'
+        && check->map[check->coordy - 2][check->coordx] != '#'
+        && check->map[check->coordy - 2][check->coordx] != 'X') {
+        if (check->save[check->coordy][check->coordx] == 'O') {
+            check->map[check->coordy][check->coordx] = 'O';
         } else {
-            check->map[check->posy][check->posx] = ' ';
+            check->map[check->coordy][check->coordx] = ' ';
         }
-        check->map[check->posy - 2][check->posx] = 'X';
-        check->map[check->posy - 1][check->posx] = 'P';
-        check->posy--;
-    } else if (check->map[check->posy - 1][check->posx] != 'X') {
-        if (check->save[check->posy][check->posx] == 'O')
-            check->map[check->posy][check->posx] = 'O';
+        check->map[check->coordy - 2][check->coordx] = 'X';
+        check->map[check->coordy - 1][check->coordx] = 'P';
+        check->coordy--;
+    } else if (check->map[check->coordy - 1][check->coordx] != 'X') {
+        if (check->save[check->coordy][check->coordx] == 'O')
+            check->map[check->coordy][check->coordx] = 'O';
         else
-            check->map[check->posy][check->posx] = ' ';
-        check->map[check->posy - 1][check->posx] = 'P';
-        check->posy--;
+            check->map[check->coordy][check->coordx] = ' ';
+        check->map[check->coordy - 1][check->coordx] = 'P';
+        check->coordy--;
     }
     return (0);
 }
 
 int move_down(struct_t *check)
 {
-    if (check->map[check->posy + 1][check->posx] == 'X'
-        && check->map[check->posy + 2][check->posx] != '#'
-        && check->map[check->posy + 2][check->posx] != 'X') {
-        if (check->save[check->posy][check->posx] == 'O')
-            check->map[check->posy][check->posx] = 'O';
+    if (check->map[check->coordy + 1][check->coordx] == 'X'
+        && check->map[check->coordy + 2][check->coordx] != '#'
+        && check->map[check->coordy + 2][check->coordx] != 'X') {
+        if (check->save[check->coordy][check->coordx] == 'O')
+            check->map[check->coordy][check->coordx] = 'O';
         else
-            check->map[check->posy][check->posx] = ' ';
-        check->map[check->posy + 2][check->posx] = 'X';
-        check->map[check->posy + 1][check->posx] = 'P';
-        check->posy++;
-    } else if (check->map[check->posy + 1][check->posx] != 'X') {
-        if (check->save[check->posy][check->posx] == 'O')
-            check->map[check->posy][check->posx] = 'O';
+            check->map[check->coordy][check->coordx] = ' ';
+        check->map[check->coordy + 2][check->coordx] = 'X';
+        check->map[check->coordy + 1][check->coordx] = 'P';
+        check->coordy++;
+    } else if (check->map[check->coordy + 1][check->coordx] != 'X') {
+        if (check->save[check->coordy][check->coordx] == 'O')
+            check->map[check->coordy][check->coordx] = 'O';
         else
-            check->map[check->posy][check->posx] = ' ';
-        check->map[check->posy + 1][check->posx] = 'P';
-        check->posy++;
+            check->map[check->coordy][check->coordx] = ' ';
+        check->map[check->coordy + 1][check->coordx] = 'P';
+        check->coordy++;
     }
     return (0);
 }
 
 int move_left(struct_t *check)
 {
-    if (check->map[check->posy][check->posx - 1] == 'X'
-        && check->map[check->posy][check->posx - 2] != '#'
-        && check->map[check->posy][check->posx - 2] != 'X') {
-        if (check->save[check->posy][check->posx] == 'O')
-            check->map[check->posy][check->posx] = 'O';
+    if (check->map[check->coordy][check->coordx - 1] == 'X'
+        && check->map[check->coordy][check->coordx - 2] != '#'
+        && check->map[check->coordy][check->coordx - 2] != 'X') {
+        if (check->save[check->coordy][check->coordx] == 'O')
+            check->map[check->coordy][check->coordx] = 'O';
         else
-            check->map[check->posy][check->posx] = ' ';
-        check->map[check->posy][check->posx - 1] = 'P';
-        check->map[check->posy][check->posx - 2] = 'X';
-        check->posx--;
-    } else if (check->map[check->posy][check->posx - 1] != 'X') {
-        if (check->save[check->posy][check->posx] == 'O')
-            check->map[check->posy][check->posx] = 'O';
+            check->map[check->coordy][check->coordx] = ' ';
+        check->map[check->coordy][check->coordx - 1] = 'P';
+        check->map[check->coordy][check->coordx - 2] = 'X';
+        check->coordx--;
+    } else if (check->map[check->coordy][check->coordx - 1] != 'X') {
+        if (check->save[check->coordy][check->coordx] == 'O')
+            check->map[check->coordy][check->coordx] = 'O';
         else
-            check->map[check->posy][check->posx] = ' ';
-        check->map[check->posy][check->posx - 1] = 'P';
-        check->posx--;
+            check->map[check->coordy][check->coordx] = ' ';
+        check->map[check->coordy][check->coordx - 1] = 'P';
+        check->coordx--;
     }
     return (0);
 }
 
 int move_right(struct_t *check)
 {
-    if (check->map[check->posy][check->posx + 1] == 'X'
-        && check->map[check->posy][check->posx + 2] != '#'
-        && check->map[check->posy][check->posx + 2] != 'X') {
-        if (check->save[check->posy][check->posx] == 'O')
-            check->map[check->posy][check->posx] = 'O';
+    if (check->map[check->coordy][check->coordx + 1] == 'X'
+        && check->map[check->coordy][check->coordx + 2] != '#'
+        && check->map[check->coordy][check->coordx + 2] != 'X') {
+        if (check->save[check->coordy][check->coordx] == 'O')
+            check->map[check->coordy][check->coordx] = 'O';
         else
-            check->map[check->posy][check->posx] = ' ';
-        check->map[check->posy][check->posx + 1] = 'P';
-        check->map[check->posy][check->posx + 2] = 'X';
-        check->posx++;
-    } else if (check->map[check->posy][check->posx + 1] != 'X') {
-        if (check->save[check->posy][check->posx] == 'O')
-            check->map[check->posy][check->posx] = 'O';
+            check->map[check->coordy][check->coordx] = ' ';
+        check->map[check->coordy][check->coordx + 1] = 'P';
+        check->map[check->coordy][check->coordx + 2] = 'X';
+        check->coordx++;
+    } else if (check->map[check->coordy][check->coordx + 1] != 'X') {
+        if (check->save[check->coordy][check->coordx] == 'O')
+            check->map[check->coordy][check->coordx] = 'O';
         else
-            check->map[check->posy][check->posx] = ' ';
-        check->map[check->posy][check->posx + 1] = 'P';
-        check->posx++;
+            check->map[check->coordy][check->coordx] = ' ';
+        check->map[check->coordy][check->coordx + 1] = 'P';
+        check->coordx++;
     }
     return (0);
 }
