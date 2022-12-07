@@ -84,7 +84,7 @@ void get_memory(struct_t *check)
         if (check->buffer[index] == '\n')
             count++;
     }
-    if (check->buffer[i - 1] != '\n')
+    if (check->buffer[index - 1] != '\n')
         count++;
     check->row = count;
 }
